@@ -11,7 +11,7 @@ export const FeatureContainer = styled.div`
 export const FeatureTitle = styled.h1`
   color: white;
   max-width: 640px;
-  font-size: 60px;
+  font-size: 58px;
   font-weight: 900;
   margin: auto;
 

@@ -7,19 +7,28 @@ import logo from  '../../logo.svg';
 
 interface Props {
   background?: boolean;
-  backGroundUrl?: string;
+  backgroundUrl?: string;
   dontShowOnSmallViewPort?: boolean;
 }
 
-const Header: FC<Props> = ({ background = true, backGroundUrl, dontShowOnSmallViewPort }) => {
+const Header: FC<Props> = ({ background = true, backgroundUrl, dontShowOnSmallViewPort = false }) => {
+
+  const BackGround: FC = ({ children }) => background ? 
+  <HeaderBackground src={backgroundUrl} dontShowOnSmallViewPort={dontShowOnSmallViewPort}>
+    {children}
+  </HeaderBackground> :
+  <>
+    {children}
+  </>
+
   return (
-    <HeaderBackground>
+    <BackGround>
       <HeaderFrame>
         <HeaderLogo to={ROUTES.home} src={logo} alt="Netflix" />
         <HeaderButtonLink to={ROUTES.signIn}>Sign In</HeaderButtonLink>
       </HeaderFrame> 
       <Feature />
-    </HeaderBackground>
+    </BackGround>
   );
 };
 
